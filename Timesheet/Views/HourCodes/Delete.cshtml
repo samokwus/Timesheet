@@ -1,0 +1,45 @@
+﻿@model Timesheet.Models.HourCode
+
+@{ ViewBag.Title = $" Delete {Model.CodeDescription}"; }
+
+<style>
+    .logout {
+        margin-top: 50px;
+    }
+</style>
+<p class="text-right logout">
+    <a href="@Url.Action("Logout", "Home")">Log out</a>
+</p>
+<h2>Are you sure you want to delete <b>@Model.CodeDescription</b> Code?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeValue)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>}
+</div>

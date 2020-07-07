@@ -1,0 +1,71 @@
+﻿@model Timesheet.Models.Schedule
+
+@{ ViewBag.Title = $"{Model.Doctor.LastName} Details"; }
+
+<style>
+    .logout {
+        margin-top: 50px;
+    }
+</style>
+<p class="text-right logout">
+    <a href="@Url.Action("Logout", "Home")">Log out</a>
+</p>
+<h2>Dr. <b>@Model.Doctor.LastName's Schedule </b> Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Location")
+        </dt>
+
+        <dd>
+            @Html.ActionLink(Model.Doctor.Location.LocationName, "Edit", new { id = Model.LocationID }, new { datatoggle = "tooltip", title = $"Click to edit {Model.Doctor.Location.LocationName} " })
+
+        </dd>
+        <dt>
+            @Html.DisplayName("Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FirstName) @Html.DisplayFor(model => model.Doctor.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time_In)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time_In)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time_Out)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time_Out)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Pay rate")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Code Description")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HourCode.CodeDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

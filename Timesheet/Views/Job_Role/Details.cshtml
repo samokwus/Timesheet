@@ -1,0 +1,30 @@
+﻿@model Timesheet.Models.Job_Role
+
+@{ ViewBag.Title = $"Dr. {Model.JobDescription} Details"; }
+
+<style>
+    .logout {
+        margin-top: 50px;
+    }
+</style>
+<p class="text-right logout">
+    <a href="@Url.Action("Logout", "Home")">Log out</a>
+</p>
+<h2><b>@Model.JobDescription</b> Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+        <dd>
+            @Html.ActionLink(Model.JobDescription, "Edit", new { id = Model.JobRoleID }, new { datatoggle = "tooltip", title = $"Click to edit {Model.JobDescription} role" })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.JobRoleID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,38 @@
+﻿@model Timesheet.Models.Location
+
+@{ ViewBag.Title = $"{Model.LocationName} Location Details"; }
+
+<style>
+    .logout {
+        margin-top: 50px;
+    }
+</style>
+<p class="text-right logout">
+    <a href="@Url.Action("Logout", "Home")">Log out</a>
+</p>
+<h2> <b>@Model.LocationName</b> Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Location Name
+        </dt>
+
+        <dd>
+            @Html.ActionLink(Model.LocationName, "Edit", new { id = Model.LocationID }, new { datatoggle = "tooltip", title = $"Click to edit {Model.LocationName} location" })
+        </dd>
+
+        <dt>
+            Sector Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector.SectorName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

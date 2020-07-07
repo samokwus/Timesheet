@@ -1,0 +1,30 @@
+﻿@model Timesheet.Models.Sector
+
+@{ ViewBag.Title = $"{Model.SectorName} Details"; }
+
+<style>
+    .logout {
+        margin-top: 50px;
+    }
+</style>
+<p class="text-right logout">
+    <a href="@Url.Action("Logout", "Home")">Log out</a>
+</p>
+<h2> <b>@Model.SectorName</b> Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Sector Name
+        </dt>
+
+        <dd>
+            @Html.ActionLink(Model.SectorName, "Edit", new { id = Model.SectionID }, new { datatoggle = "tooltip", title = $"Click to edit {Model.SectorName} sector" })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

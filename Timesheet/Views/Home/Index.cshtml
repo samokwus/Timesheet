@@ -1,0 +1,62 @@
+﻿@model Timesheet.Models.User
+@{
+    ViewBag.Title = "Home Page";
+    if (Session["email"] == null)
+    {
+        Response.Redirect("~/Home/login");
+    }
+}
+    <div class="jumbotron">
+        <div>
+            <h1 class="text-center">
+                TimeSheet
+            </h1>
+            @*@using (Html.BeginForm("Index", "Users"))
+            {
+                <div>
+                    @Html.EditorFor(model => model.Email, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control input-sm",
+                       @style = "margin: 0px auto; width: 600px; height: 40px;",
+                            placeholder = @Html.DisplayNameFor(m => m.Email)
+                   }
+               })
+                </div>
+                <br />
+                <div>
+                    @Html.TextBox("Password", null, new { @class = "form-control input-sm", @placeholder = "Password", @style = "margin: 0px auto; width: 600px; height: 40px;" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-md-12">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                        <input type="submit" value="Cancel" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>*@
+    </div>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>*@

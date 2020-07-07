@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Timesheet.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["email"] == null)
+    {
+        Response.Redirect("~/Home/login");
+    }
+}
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("User", "Index", "Users")</li>
+            <li>@Html.ActionLink("TimeCard", "Index", "Doctors")</li>
+            <li>@Html.ActionLink("Reports", "Index", "Schedules")</li>
+            <li>@Html.ActionLink("Job Roles", "Index", "Job_Role")</li>
+            <li>@Html.ActionLink("Sectors", "Index", "Sectors")</li>
+            <li>@Html.ActionLink("Hour Code", "Index", "HourCodes")</li>
+        </ul>
+    </div>
+        <div>
+            <p class="text-right">
+                <a href="@Url.Action("Logout", "Home")">Log out</a>
+            </p>
+            <h2 class="text-left welcome">
+                Welcome,
+                @Session["Name"]
+            </h2>
+        </div>
+        <p class="text-right">
+            @Html.ActionLink("Add User", "Create")
+        </p>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayName("Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Job Description")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                var concat = item.FirstName + " " + item.LastName;
+                <tr>
+                    <td>
+                        @Html.ActionLink(concat, "Details", new { id = item.UserID }, new { datatoggle = "tooltip", title = $"Click for details"})
+                        @*@Html.ActionLink(concat, "Details", new { id = item.UserID }, new { datatoggle = "tooltip", title = $"Click for details" })*@
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Role.JobDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    </td>
+                </tr>
+            }
+        </table>
